@@ -3,6 +3,7 @@ local fn = vim.fn
 
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
+
 if fn.empty(fn.glob(install_path)) > 0 then
     execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
     execute "packadd packer.nvim"
@@ -35,7 +36,7 @@ return require("packer").startup(function(use)
     -- Telescope
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
-    use {"tjdevries/astronauta.nvim"}
+    -- use {"tjdevries/astronauta.nvim"}
     use {
         "nvim-telescope/telescope.nvim",
         config = [[require('v-telescope')]],
@@ -58,7 +59,7 @@ return require("packer").startup(function(use)
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
     -- Neoformat
-    use { "sbdchd/neoformat" }
+    -- use { "sbdchd/neoformat" }
 
     -- Explorer
     use {
@@ -101,18 +102,18 @@ return require("packer").startup(function(use)
     }
 
     -- Use fzy for telescope
-    use {
-        "nvim-telescope/telescope-fzy-native.nvim",
-        event = "BufRead",
-        disable = not Var.plugin.telescope_fzy.active
-    }
+    -- use {
+    --     "nvim-telescope/telescope-fzy-native.nvim",
+    --     event = "BufRead",
+    --     disable = not Var.plugin.telescope_fzy.active
+    -- }
     -- Use project for telescope
-    use {
-        "nvim-telescope/telescope-project.nvim",
-        event = "BufRead",
-        after = "telescope.nvim",
-        disable = not Var.plugin.telescope_project.active
-    }
+    -- use {
+    --     "nvim-telescope/telescope-project.nvim",
+    --     event = "BufRead",
+    --     after = "telescope.nvim",
+    --     disable = not Var.plugin.telescope_project.active
+    -- }
 
 
     -- Status Line and Bufferline
@@ -155,7 +156,7 @@ return require("packer").startup(function(use)
         event = "BufRead",
         setup = function()
 
-            vim.g.indentLine_enabled = 1
+            vim.g.indentLine_enabled = 0
             vim.g.indent_blankline_char = "▏"
 
             vim.g.indent_blankline_filetype_exclude =
@@ -189,11 +190,11 @@ return require("packer").startup(function(use)
     }
 
     -- Diffview
-    use {
-        "sindrets/diffview.nvim",
-        event = "BufRead",
-        disable = not Var.plugin.diffview.active,
-    }
+    -- use {
+    --     "sindrets/diffview.nvim",
+    --     event = "BufRead",
+    --     disable = not Var.plugin.diffview.active,
+    -- }
 
     -- Pretty parentheses
     use {
@@ -207,6 +208,19 @@ return require("packer").startup(function(use)
         event = "InsertEnter",
         disable = not Var.plugin.ts_autotag.active,
     }
+
+    -- -- Javascript / Typescript
+    -- use {
+    --     "jose-elias-alvarez/nvim-lsp-ts-utils",
+    --     ft = {
+    --         "javascript",
+    --         "javascriptreact",
+    --         "javascript.jsx",
+    --         "typescript",
+    --         "typescriptreact",
+    --         "typescript.tsx",
+    --     },
+    -- }
 
     -- I like this so much
     use { "tpope/vim-surround" }

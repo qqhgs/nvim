@@ -7,7 +7,7 @@ end
 
 vim.api.nvim_command('packadd packer.nvim')
 
-local no_errors = pcall(function()
+local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
@@ -69,16 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["FTerm.nvim"] = {
-    config = { "\27LJ\2\2:\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\16v-floatterm\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/ryn/.local/share/nvim/site/pack/packer/opt/FTerm.nvim"
-  },
-  ["astronauta.nvim"] = {
-    loaded = true,
-    path = "/home/ryn/.local/share/nvim/site/pack/packer/start/astronauta.nvim"
-  },
   ["barbar.nvim"] = {
     config = { "\27LJ\2\2Š\2\0\0\5\0\r\0\0256\0\0\0009\0\1\0009\0\2\0'\1\3\0'\2\4\0'\3\5\0005\4\6\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\1\3\0'\2\a\0'\3\b\0005\4\t\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\1\3\0'\2\n\0'\3\v\0005\4\f\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2\21:BufferClose<CR>\n<S-x>\1\0\2\vsilent\2\fnoremap\2\24:BufferPrevious<CR>\f<S-TAB>\1\0\2\vsilent\2\fnoremap\2\20:BufferNext<CR>\n<TAB>\6n\20nvim_set_keymap\bapi\bvim\0" },
     loaded = false,
@@ -91,11 +81,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/ryn/.local/share/nvim/site/pack/packer/opt/dashboard-nvim"
-  },
-  ["diffview.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/ryn/.local/share/nvim/site/pack/packer/opt/diffview.nvim"
   },
   ["emmet-vim"] = {
     loaded = true,
@@ -120,10 +105,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/ryn/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
-  },
-  neoformat = {
-    loaded = true,
-    path = "/home/ryn/.local/share/nvim/site/pack/packer/start/neoformat"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\2+\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\16v-autopairs\frequire\0" },
@@ -193,19 +174,8 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ryn/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
-  ["telescope-fzy-native.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/ryn/.local/share/nvim/site/pack/packer/opt/telescope-fzy-native.nvim"
-  },
-  ["telescope-project.nvim"] = {
-    load_after = {},
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/ryn/.local/share/nvim/site/pack/packer/opt/telescope-project.nvim"
-  },
   ["telescope.nvim"] = {
-    after = { "nvim-autopairs", "telescope-project.nvim" },
+    after = { "nvim-autopairs" },
     loaded = true,
     only_config = true
   },
@@ -262,9 +232,9 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'dashboard-nvim', 'FTerm.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'nvim-ts-autotag', 'vim-vsnip', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'gitsigns.nvim', 'barbar.nvim', 'diffview.nvim', 'telescope-project.nvim', 'telescope-fzy-native.nvim', 'nvim-colorizer.lua', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'nvim-ts-autotag', 'friendly-snippets', 'vim-vsnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'barbar.nvim', 'indent-blankline.nvim', 'gitsigns.nvim', 'nvim-colorizer.lua', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
@@ -272,5 +242,5 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
-  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: ".v:exception | echom "Please check your config for correctness" | echohl None')
+  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

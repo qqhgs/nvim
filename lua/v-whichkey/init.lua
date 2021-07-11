@@ -120,7 +120,7 @@ local mappings = {
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },
         i = { "<cmd>PackerInstall<cr>", "Install" },
-        r = { "<cmd>lua require('v-utils').reload_lv_config()<cr>", "Reload" },
+        r = { "<cmd>lua require('v-utils').reload_config()<cr>", "Reload" },
         s = { "<cmd>PackerSync<cr>", "Sync" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
     },

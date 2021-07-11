@@ -9,8 +9,5 @@ require('v-utils')
 require('v-galaxyline')
 require('v-treesitter')
 require('v-whichkey')
-require('v-neoformat')
+-- require('v-neoformat')
 require('lsp')
-if Var.lang.emmet.active then
-  require "lsp.emmet-ls"
-end

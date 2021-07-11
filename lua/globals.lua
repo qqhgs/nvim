@@ -6,7 +6,6 @@ TERMINAL 		= vim.fn.expand "$TERMINAL"
 Var = {
 	auto_close_tree 	= 0,
     format_on_save      = false,
-
 	auto_compleate 		= true,
 	hidden_files 		= true,
 	number 				= true,
@@ -24,6 +23,10 @@ Var = {
 
     user_plugins = {
         -- use config.lua for this not put here
+    },
+
+    user_autocommands = {
+        { "FileType", "qf", "set nobuflisted" },
     },
 
 	plugin = {

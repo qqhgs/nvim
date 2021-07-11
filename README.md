@@ -1,5 +1,3 @@
-Nothing! Just install if you want to know this simple rice. ^^
-
 <div align="center"><p>
     <a href="https://github.com/qqhgs/envikod/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/qqhgs/envikod" />
@@ -11,3 +9,5 @@ Nothing! Just install if you want to know this simple rice. ^^
       <img src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License" alt="License"
     />
 </p>	
+
+Nothing! Just install if you want to know this simple rice. ^^

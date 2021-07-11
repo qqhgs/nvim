@@ -1,3 +1,5 @@
+![Envikod Demo](./media/envikod.png)
+
 <div align="center"><p>
     <a href="https://github.com/qqhgs/envikod/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/qqhgs/envikod" />
